@@ -1,15 +1,13 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.example.sindhura.myapplication"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+
     }
     buildTypes {
         release {
@@ -25,3 +23,16 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
 }
+task deleteOldJar(type: Delete){
+    delete 'release/AndroidPlugin.jar'
+}
+
+
+task exportJar( type: Copy){
+    from('build/intermediates/bundles/release/')
+    into('release/')
+    include('classes.jar')
+    rename('classes.jar','AndroidPlugin.jar')
+}
+
+exportJar.dependsOn(deleteOldJar, build)

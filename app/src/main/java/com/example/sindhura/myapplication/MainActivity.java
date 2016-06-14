@@ -10,19 +10,27 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-private static Button button_sbm;
+
+    private static Button button_sbm;
     private static Button button_two;
     private static Button button_three;
     private static Button button_four;
+
+    EditText editName;
+    Button btnAddCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         OnClickButtonListner();
         OnClickButtonListnerr();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -114,4 +122,5 @@ private static Button button_sbm;
 
         return super.onOptionsItemSelected(item);
     }
+
 }
